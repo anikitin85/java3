@@ -1,0 +1,25 @@
+// Demonstrate two simple lambda expressions.
+
+// A functional interface.
+interface MyValue {
+	double getValue();
+}
+
+// Another functional interface.
+interface MyParamValue {
+	double getValue(double v);
+}
+
+// Lambda demo.
+class LambdaDemo {
+	public static void main(String[] args) {
+	
+		MyValue mv; // declare an interface reference
+		mv = () -> 98.6;
+		System.out.println("A constant value: " + mv.getValue());
+		
+		MyParamValue mpv = (n) -> 1.0 / n;
+		System.out.println("Reciprocal of 4 is " + mpv.getValue(4.0);
+		System.out.println("Reciprocal of 8 is " + mpv.getValue(8.0);
+	}
+}
