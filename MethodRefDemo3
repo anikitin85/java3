@@ -1,0 +1,38 @@
+// instance method reference :: to refer to any instance
+
+interface MyIntNumPredicate {
+	boolean test(MyIntNum mv, int n);
+}
+
+class MyIntNum {
+	private int v;
+	
+	MyIntNum(int n) {
+		v = n;
+	}
+	
+	int getNum() {
+		return v;
+	}
+	
+	boolean isFactor(int n) {
+		return (v % n) == 0;
+	}
+}
+
+class MethodRefDemo3 {
+	public static void main(String[] args) {
+		boolean result;
+		
+		MyIntNum my1 = new MyIntNum(12);
+		MyIntNum my2 = new MyIntNum(16);
+		
+		MyIntNumPredicate inp = MyIntNum::isFactor;
+		
+		result = inp.test(my1, 3);
+		if (result) System.out.println("3 is factor of " + my1.getNum());
+		
+		result = inp.test(my2, 3);
+		if (result) System.out.println("3 is factor of " + my2.getNum());
+	}
+}
