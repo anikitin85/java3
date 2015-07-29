@@ -1,0 +1,41 @@
+// Method reference :: for an instance method.
+
+interface IntPredicate {
+	boolean test(int n);
+}
+
+// return true if argument is factor of the stored value
+class MyIntNum {
+	private int v;
+	
+	MyIntNum(int x) {
+		v = x;
+	}
+	
+	int getNum() {
+		return v;
+	}
+	
+	boolean isFactor(int n) {
+		return (v % n) == 0;
+	}
+}
+
+
+// Demo
+class MethodRefDemo2 {
+
+	public static void main(String[] args) {
+		boolean result;
+		MyIntNum my1 = new MyIntNum(12);
+		MyIntNum my2 = new MyIntNum(16);
+		
+		IntPredicate ip = my1::isFactor;
+		result = ip.test(3);
+		if (result) System.out.println("3 is factor of " + my1.getNum());
+		
+		ip = my2::isFactor;
+		result = ip.test(3);
+		if (!result) System.out.println("3 is not factor of " + my2.getNum());
+	}
+}
